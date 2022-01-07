@@ -7,7 +7,7 @@ const scanner=scan.createInterface({
 var browser;
 const PRIME = "https://www.primevideo.com/detail/"
 const startService = async () => {
-    browser= await puppeteer.launch({headless:true,userDataDir:'./cookieHandler', args:['--no-sandbox'] });
+    browser= await puppeteer.launch({headless:true,userDataDir:'./cookieHandler', args:['--no-sandbox', '--disable-setuid-sandbox',] });
     const pageIn= await browser.newPage();
     return pageIn;
 }
