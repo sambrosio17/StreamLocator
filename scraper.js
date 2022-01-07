@@ -2,15 +2,22 @@ const puppeteer=require ('puppeteer');
 var browser;
 const PRIME = "https://www.primevideo.com/detail/"
 const startService = async () => {
-    browser= await puppeteer.launch({headless:true,userDataDir:'./cookieHandler', args:['--no-sandbox', '--disable-setuid-sandbox','--proxy-server=socks4://94.198.211.217:5678', `--ignore-certificate-errors`] });
+    browser= await puppeteer.launch({headless:true,userDataDir:'./cookieHandler', args:['--no-sandbox', '--disable-setuid-sandbox','--proxy-server=http://45.94.47.108:8152', `--ignore-certificate-errors`] });
     const pageIn= await browser.newPage();
     return pageIn;
 }
+const stealth= require('puppeteer-extra-plugin-stealth');
+
+puppeteer.use(stealth());
 
 const doSearch = async (keyword) => {
     const page=await startService();
     await page.setUserAgent("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.75 Safari/537.36");
-    await page.goto("https://www.google.com/search?q="+keyword, { waitUntil: 'networkidle2' });
+    await page.authenticate({
+        username:"zicntcra",
+        password:"385kyaamrekj"
+    });
+    await page.goto("https://www.google.com/search?q="+keyword, { waitUntil: 'networkidle2', timeout:0 });
     return page;
 }
 
