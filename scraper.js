@@ -1,13 +1,8 @@
 const puppeteer=require ('puppeteer');
-const scan=require('readline');
-const scanner=scan.createInterface({
-    input:process.stdin,
-    output:process.stdout
-});
 var browser;
 const PRIME = "https://www.primevideo.com/detail/"
 const startService = async () => {
-    browser= await puppeteer.launch({headless:true,userDataDir:'./cookieHandler', args:['--no-sandbox', '--disable-setuid-sandbox',] });
+    browser= await puppeteer.launch({headless:true,userDataDir:'./cookieHandler', args:['--no-sandbox', '--disable-setuid-sandbox','--proxy-server=socks4://94.198.211.217:5678'] });
     const pageIn= await browser.newPage();
     return pageIn;
 }

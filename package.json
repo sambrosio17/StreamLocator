@@ -14,7 +14,8 @@
     "ejs": "^3.1.6",
     "express": "^4.17.2",
     "mongoose": "^6.1.5",
-    "puppeteer": "^13.0.1"
+    "puppeteer": "^13.0.1",
+    "puppeteer-page-proxy": "^1.2.8"
   },
   "engines": {
     "node": "14.x"
