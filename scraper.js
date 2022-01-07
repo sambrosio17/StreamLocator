@@ -1,8 +1,11 @@
 const puppeteer=require ('puppeteer-extra');
 var browser;
 const PRIME = "https://www.primevideo.com/detail/"
+require('dotenv').config()
+const proxyIp=process.env.IP;
+const proxyPort=process.env.PROXYPORT;
 const startService = async () => {
-    browser= await puppeteer.launch({headless:true,userDataDir:'./cookieHandler', args:['--no-sandbox', '--disable-setuid-sandbox','--proxy-server=http://45.94.47.108:8152', `--ignore-certificate-errors`] });
+    browser= await puppeteer.launch({headless:true,userDataDir:'./cookieHandler', args:['--no-sandbox', '--disable-setuid-sandbox','--proxy-server=http://'+proxyIp+':'+proxyPort, `--ignore-certificate-errors`] });
     const pageIn= await browser.newPage();
     return pageIn;
 }
