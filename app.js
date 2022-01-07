@@ -10,7 +10,7 @@ mongoose.connect("mongodb+srv://salvatore:"+DB_PASS+"@cluster0.yrroi.mongodb.net
 const Item=mongoose.model("Item",{title:String, providers: JSON});
 app.set('view engine', 'ejs');
 app.get('/', function(req,res) {
-    res.render('/public/index.html')
+    res.render('/public/index')
 });
 
 app.get('/search/:movie', async function(req, res){
