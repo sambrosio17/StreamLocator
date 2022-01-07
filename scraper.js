@@ -7,7 +7,11 @@ const proxyPort=process.env.PROXYPORT;
 const startService = async () => {
     browser= await puppeteer.launch({headless:true,userDataDir:'./cookieHandler', args:['--no-sandbox', '--disable-setuid-sandbox',/*'--proxy-server=http://'+proxyIp+':'+proxyPort,*/ `--ignore-certificate-errors`] });
     const pageIn= await browser.newPage();
-    return pageIn;
+    await pageIn.goto("https://www.google.com/preferences", {waitUntil: 'networkidle2'})
+    await doConfig(pageIn);
+    await pageIn.close();
+    const page= await browser.newPage();
+    return page;
 }
 const stealth= require('puppeteer-extra-plugin-stealth');
 
@@ -16,9 +20,15 @@ puppeteer.use(stealth());
 const doSearch = async (keyword) => {
     const page=await startService();
     await page.setUserAgent("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.75 Safari/537.36");
-    
     await page.goto("https://www.google.com/search?q="+keyword+"&cr=countryIT", { waitUntil: 'networkidle2', timeout:0 });
     return page;
+}
+
+const doConfig = async (page) => {
+    await (await page.$$(".jfk-link"))[2].click();
+    await (await page.$("#regionoIT")).click();
+    await (await page.$$("#form-buttons > div"))[0].click();
+    await page.waitForTimeout(500);
 }
 
 const consentCookie = async (page) => {
