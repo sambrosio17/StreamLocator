@@ -1,4 +1,4 @@
-const puppeteer=require ('puppeteer');
+const puppeteer=require ('puppeteer-extra');
 var browser;
 const PRIME = "https://www.primevideo.com/detail/"
 const startService = async () => {
