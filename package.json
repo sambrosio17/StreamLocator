@@ -4,7 +4,7 @@
   "description": "Motore di Ricerca per film e serie tv su piattaforme streaming",
   "main": "index.js",
   "scripts": {
-    "web": "node app.js"
+    "start": "node app.js"
   },
   "author": "sambrosio17",
   "license": "ISC",
