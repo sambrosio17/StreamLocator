@@ -1,4 +1,4 @@
-const puppeteer=require ('puppeteer-extra');
+const puppeteer=require ('puppeteer');
 var browser;
 const PRIME = "https://www.primevideo.com/detail/"
 require('dotenv').config()
