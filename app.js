@@ -2,6 +2,7 @@ const scraper = require('./scraper.js');
 const express = require('express');
 const app= express();
 const mongoose = require('mongoose');
+const { append } = require('express/lib/response');
 require('dotenv').config()
 const DB_PASS=process.env.DB_PASSWORD;
 console.log(DB_PASS);
@@ -76,7 +77,7 @@ app.get('/provider/:providerName',async function(req,res) {
     }
 });
 
-
+app.get('/image', (req,res) => res.sendFile(__dirname+'/test.jpg'));
 
 const port= process.env.PORT || 3000;
 app.listen(port, console.log("working on port: "+port));

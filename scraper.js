@@ -2,7 +2,7 @@ const puppeteer=require ('puppeteer');
 var browser;
 const PRIME = "https://www.primevideo.com/detail/"
 const startService = async () => {
-    browser= await puppeteer.launch({headless:true,userDataDir:'./cookieHandler', args:['--no-sandbox', '--disable-setuid-sandbox','--proxy-server=socks4://94.198.211.217:5678'] });
+    browser= await puppeteer.launch({headless:true,userDataDir:'./cookieHandler', args:['--no-sandbox', '--disable-setuid-sandbox','--proxy-server=socks4://94.198.211.217:5678', `--ignore-certificate-errors`] });
     const pageIn= await browser.newPage();
     return pageIn;
 }
