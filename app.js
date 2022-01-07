@@ -9,7 +9,11 @@ console.log(DB_PASS);
 mongoose.connect("mongodb+srv://salvatore:"+DB_PASS+"@cluster0.yrroi.mongodb.net/test");
 const Item=mongoose.model("Item",{title:String, providers: JSON});
 
-app.get('/:movie', async function(req, res){
+app.get('/', function(req,res) {
+    res.render('/public/index.html')
+});
+
+app.get('/search/:movie', async function(req, res){
     if(req.params.movie.includes("favicon")){
         res.status(204);
     }else {
