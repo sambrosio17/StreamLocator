@@ -9,7 +9,7 @@ console.log(DB_PASS);
 mongoose.connect("mongodb+srv://salvatore:"+DB_PASS+"@cluster0.yrroi.mongodb.net/test");
 const Item=mongoose.model("Item",{title:String, providers: JSON});
 app.set('view engine', 'ejs');
-app.use(express.static(__dirname + '/public/'));
+//app.use(express.static(__dirname + '/public/'));
 app.get('/', function(req,res) {
     res.render('index')
 });
