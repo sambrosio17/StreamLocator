@@ -2,8 +2,7 @@ const puppeteer=require ('puppeteer-extra');
 var browser;
 const PRIME = "https://www.primevideo.com/detail/"
 require('dotenv').config()
-const proxyIp=process.env.IP;
-const proxyPort=process.env.PROXYPORT;
+
 const startService = async () => {
     browser= await puppeteer.launch({headless:true,userDataDir:'./cookieHandler', args:['--no-sandbox', '--disable-setuid-sandbox',/*'--proxy-server=http://'+proxyIp+':'+proxyPort,*/ `--ignore-certificate-errors`] });
     const pageIn= await browser.newPage();
@@ -13,9 +12,7 @@ const startService = async () => {
     const page= await browser.newPage();
     return page;
 }
-const stealth= require('puppeteer-extra-plugin-stealth');
 
-puppeteer.use(stealth());
 
 const doSearch = async (keyword) => {
     const page=await startService();
