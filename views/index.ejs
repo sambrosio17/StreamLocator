@@ -17,7 +17,6 @@ document.querySelector("#button").addEventListener('click',async () => {
     const result= await (await fetch("./search/Harry Potter")).json();
     result.map( (item) =>document.querySelector("#test").innerHTML+=item.title )
     
-    await console.log(await result.json());
 }) 
 
 </script>
