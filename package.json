@@ -14,7 +14,7 @@
     "ejs": "^3.1.6",
     "express": "^4.17.2",
     "mongoose": "^6.1.5",
-    "puppeteer": "^13.0.1"g
+    "puppeteer": "^13.0.1"
   },
   "engines": {
     "node": "14.x"
