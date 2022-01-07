@@ -5,7 +5,7 @@ require('dotenv').config()
 const proxyIp=process.env.IP;
 const proxyPort=process.env.PROXYPORT;
 const startService = async () => {
-    browser= await puppeteer.launch({headless:false,userDataDir:'./cookieHandler', args:['--no-sandbox', '--disable-setuid-sandbox',/*'--proxy-server=http://'+proxyIp+':'+proxyPort,*/ `--ignore-certificate-errors`] });
+    browser= await puppeteer.launch({headless:true,userDataDir:'./cookieHandler', args:['--no-sandbox', '--disable-setuid-sandbox',/*'--proxy-server=http://'+proxyIp+':'+proxyPort,*/ `--ignore-certificate-errors`] });
     const pageIn= await browser.newPage();
     return pageIn;
 }
