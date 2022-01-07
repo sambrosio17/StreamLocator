@@ -16,10 +16,7 @@ puppeteer.use(stealth());
 const doSearch = async (keyword) => {
     const page=await startService();
     await page.setUserAgent("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.75 Safari/537.36");
-    await page.authenticate({
-        username:"zicntcra",
-        password:"385kyaamrekj"
-    });
+    
     await page.goto("https://www.google.com/search?q="+keyword, { waitUntil: 'networkidle2', timeout:0 });
     return page;
 }
