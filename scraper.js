@@ -4,7 +4,7 @@ const PRIME = "https://www.primevideo.com/detail/"
 require('dotenv').config()
 
 const startService = async () => {
-    browser= await puppeteer.launch({headless:true,userDataDir:'./cookieHandler', args:['--no-sandbox', '--disable-setuid-sandbox',/*'--proxy-server=http://'+proxyIp+':'+proxyPort,*/ `--ignore-certificate-errors`] });
+    browser= await puppeteer.launch({headless:true,/*userDataDir:'./cookieHandler'*/, args:['--no-sandbox', '--disable-setuid-sandbox',/*'--proxy-server=http://'+proxyIp+':'+proxyPort,*/ `--ignore-certificate-errors`] });
     const pageIn= await browser.newPage();
     await pageIn.goto("https://www.google.com/preferences", {waitUntil: 'networkidle2'})
     await doConfig(pageIn);
