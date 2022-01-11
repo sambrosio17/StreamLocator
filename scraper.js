@@ -24,6 +24,8 @@ const doSearch = async (keyword) => {
 const doConfig = async (page) => {
     await (await page.$$(".jfk-link"))[2].click();
     await (await page.$("#regionoIT")).click();
+    await page.goto("https://www.google.com/preferences#languages", {waitUntil: 'networkidle2'})
+    await (await page.$$("#langit"))[0].click();
     await (await page.$$("#form-buttons > div"))[0].click();
     await page.waitForTimeout(500);
 }
